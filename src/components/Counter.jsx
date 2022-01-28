@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
-
-function Counter({index}) {
-   //useState(0) => initialiser a 0
-   const [counter, setcounter] = useState(0);
+import '../assets/css/counter.css' ;
+function Counter({index , initlavalue}) {
+   //useState(0) => initialiser a 0 , dynamique
+   //usf
+   //counter = variable
+   const [counter, setcounter] = useState(initlavalue);
    const increment=() =>{
      setcounter(counter+1);
    }
    const decrement = () =>{
+    if (counter > 0)
      setcounter(counter-1);
    };
    //bsh tahky maa serveur bel useEffect
@@ -14,11 +17,14 @@ function Counter({index}) {
      ()=> {} ,[]
      );
     return (
-        <div>
-        <span style={{fontSize:"100px"}}>{counter}</span>
+        <div className="counter">
+          <h3>
+            Counter{index}
+          </h3>
+        <span style={{fontSize:"100px"}}> {counter}</span>
       <div>
-        <button onClick={()=>increment()} className='buttonstyles'>+</button>
-        <button onClick={()=>decrement()} className='buttonstyles'>-</button>
+        <button onClick={()=>increment()} >+</button>
+        <button onClick={()=>decrement()} >-</button>
       </div>
         </div>
     )
